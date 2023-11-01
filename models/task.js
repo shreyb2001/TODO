@@ -6,10 +6,6 @@ const taskSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    imageUrl: {
-      type: String,
-      default: "/default.png",
-    },
     type: {
       type: String,
       default: "work",
@@ -20,7 +16,7 @@ const taskSchema = new mongoose.Schema(
     },
     owner: {
       type: String,
-      required: false,
+      required: true,
     },
   },
   {

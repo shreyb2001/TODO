@@ -17,6 +17,7 @@ import {
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
+import { useParams } from "next/navigation";
 
 const formSchema = z.object({
   title: z.string().min(3, {
@@ -28,6 +29,8 @@ const formSchema = z.object({
 });
 
 const InputForm = () => {
+  const params = useParams();
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -39,14 +42,12 @@ const InputForm = () => {
   });
 
   const onSubmit = async (data) => {
-    const uploadData = { ...data, owner: "123123dfsdfsfsdfsd", type: "work" };
-    console.log(uploadData);
+    const uploadData = { ...data, owner: params.userId };
     try {
       await axios.post(`/api/`, uploadData);
     } catch (error) {
       console.log(error);
     }
-    console.log(data);
   };
 
   return (
@@ -59,7 +60,7 @@ const InputForm = () => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-8 flex justify-center items-center"
+          className="flex justify-center items-center"
         >
           <FormField
             control={form.control}
@@ -77,7 +78,7 @@ const InputForm = () => {
               </FormItem>
             )}
           />
-          <button type="submit">
+          <button type="submit" className="p-2">
             <AddIcon />
           </button>
         </form>

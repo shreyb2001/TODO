@@ -12,8 +12,6 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { getServerSession } from "next-auth";
-import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
@@ -21,7 +19,7 @@ export default function Page() {
   const { data } = useSession();
 
   if (data) {
-    redirect(`/${data.user.email}`);
+    return redirect(`/${data.user.email}`);
   }
 
   return (

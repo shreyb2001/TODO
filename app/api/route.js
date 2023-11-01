@@ -13,6 +13,7 @@ export async function POST(req, { params }) {
       title,
       completed,
       type,
+      owner,
     });
 
     return NextResponse.json(task);
