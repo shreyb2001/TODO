@@ -90,7 +90,7 @@ const InputForm = () => {
             key={index}
             className={cn(
               `w-4 h-4 rounded-full bg-[${button.color}] cursor-pointer`,
-              selectedValue === button.id && "w-8 h-8"
+              selectedValue === button.id && "w-7 h-7"
             )}
             onClick={() => onClick(button.id)}
           ></span>
