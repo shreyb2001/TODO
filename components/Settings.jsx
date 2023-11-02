@@ -17,7 +17,7 @@ const Settings = () => {
           <div className="flex justify-center items-center gap-2 py-3">
             <LogOutIcon />
             <button onClick={() => signOut()}>
-              <p className="font-extrabold text-lg text-[#717082b4]">Logout</p>
+              <p className="font-bold text-lg text-[#717082b4]">Logout</p>
             </button>
           </div>
         </div>
