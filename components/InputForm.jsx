@@ -83,8 +83,6 @@ const InputForm = () => {
     }
   };
 
-  console.log(selectedValue);
-
   return (
     <div className="bg-white flex justify-around items-center p-3 rounded-2xl">
       <div className="flex justify-center items-center gap-1">

@@ -18,12 +18,22 @@ export default async function Home({ params }) {
   await dbConnect();
   const tasks = await Task.find({
     owner,
-  }).sort({ createdBy: 1 });
+  }).sort({ createdAt: 1 });
+
+  const formattedTasks = tasks.map((task) => ({
+    ...task,
+    time: task.createdAt.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+    }),
+  }));
+
+  const plainObject = JSON.parse(JSON.stringify(formattedTasks));
 
   return (
     <Card className="p-2 bg-[#A18AFF] flex">
       <LeftSection userData={data} />
-      <RightSection tasks={tasks} />
+      <RightSection tasks={plainObject} />
     </Card>
   );
 }

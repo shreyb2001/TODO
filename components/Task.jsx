@@ -13,9 +13,9 @@ const Task = ({ todo }) => {
   const router = useRouter();
   let color;
 
-  if (todo.type === "home") {
+  if (todo._doc.type === "home") {
     color = "#fd99af";
-  } else if (todo.type === "work") {
+  } else if (todo._doc.type === "work") {
     color = "#3fd4f4";
   } else {
     color = "#fac608";
@@ -23,8 +23,8 @@ const Task = ({ todo }) => {
 
   const handlePatch = async () => {
     try {
-      await axios.patch(`/api/${params.userId}/${todo._id}`, {
-        completed: !todo.completed,
+      await axios.patch(`/api/${params.userId}/${todo._doc._id}`, {
+        completed: !todo._doc.completed,
       });
       router.refresh();
       toast.success("Task Updated!");
@@ -36,7 +36,7 @@ const Task = ({ todo }) => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/api/${params.userId}/${todo._id}`);
+      await axios.delete(`/api/${params.userId}/${todo._doc._id}`);
       router.refresh();
       toast.success("Task Removed!");
     } catch (e) {
@@ -48,14 +48,14 @@ const Task = ({ todo }) => {
   return (
     <div className="bg-white flex justify-between items-center p-4 rounded-2xl font-bold text-[#717082b4]">
       <span className={`w-4 h-4 rounded-full bg-[${color}]`}></span>
-      <p className="w-2/4">{todo.title}</p>
+      <p className="w-2/4">{todo._doc.title}</p>
       <p>{todo.time}</p>
       <div className="flex items-center gap-2">
         <button onClick={handleDelete}>
           <DeleteIcon />
         </button>
         <button onClick={handlePatch}>
-          {todo.completed ? <CheckedIcon /> : <UncheckedIcon />}
+          {todo._doc.completed ? <CheckedIcon /> : <UncheckedIcon />}
         </button>
       </div>
     </div>
