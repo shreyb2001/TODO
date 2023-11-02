@@ -20,7 +20,6 @@ import axios from "axios";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { cn } from "@/lib/utils";
-import qs from "query-string";
 
 const buttons = [
   {
@@ -49,7 +48,7 @@ const InputForm = () => {
   const params = useParams();
   const router = useRouter();
 
-  const [selectedValue, setSelectedValue] = useState(null);
+  const [selectedValue, setSelectedValue] = useState("work");
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -91,7 +90,7 @@ const InputForm = () => {
             key={index}
             className={cn(
               `w-4 h-4 rounded-full bg-[${button.color}] cursor-pointer`,
-              selectedValue === button.id && "w-6 h-6"
+              selectedValue === button.id && "w-8 h-8"
             )}
             onClick={() => onClick(button.id)}
           ></span>
