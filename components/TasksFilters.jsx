@@ -7,7 +7,7 @@ const TasksFilters = () => {
       <EventsIcon />
       <div>
         <p className="font-extrabold text-lg text-[#717082b4] tracking-widest">
-          Filters
+          Categories 
         </p>
         <div className="flex flex-col items-start">
           <div className="flex justify-center items-center gap-3 py-2">
